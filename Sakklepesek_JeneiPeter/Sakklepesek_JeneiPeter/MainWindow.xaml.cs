@@ -23,6 +23,12 @@ namespace Sakklepesek_JeneiPeter
         public MainWindow()
         {
             InitializeComponent();
+            TablaLetrehozas();
+        }
+
+        void TablaLetrehozas()
+        {
+            
         }
     }
 }
