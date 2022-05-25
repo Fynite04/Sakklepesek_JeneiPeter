@@ -6,16 +6,16 @@
         xmlns:local="clr-namespace:Sakklepesek_JeneiPeter"
         mc:Ignorable="d"
         Title="Sakklépések - Jenei Péter" Height="530" Width="470
-        ">
+        " ResizeMode="NoResize">
     <Canvas x:Name="foGrid" Height="500" Margin="1,7,0,7">
-        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="179" Canvas.Left="108" Canvas.Top="8">
-            <RadioButton Content="Király"/>
-            <RadioButton Content="Királynő"/>
-            <RadioButton Content="Bástya"/>
-            <RadioButton Content="Futó"/>
-            <RadioButton Content="Huszár"/>
-            <RadioButton Content="Gyalog (fehér)"/>
-            <RadioButton Content="Gyalog (fekete)"/>
+        <ComboBox x:Name="figura_CBx" HorizontalAlignment="Left" VerticalAlignment="Center" Width="201" Canvas.Left="86" Canvas.Top="8" SelectionChanged="figura_CBx_SelectionChanged">
+            <ComboBoxItem x:Name="figKiraly" Content="Király"/>
+            <ComboBoxItem x:Name="figKiralyno" Content="Királynő"/>
+            <ComboBoxItem x:Name="figBastya" Content="Bástya"/>
+            <ComboBoxItem x:Name="figFuto" Content="Futó"/>
+            <ComboBoxItem x:Name="figHuszar" Content="Huszár"/>
+            <ComboBoxItem x:Name="figGyalogFeher" Content="Gyalog (fehér)"/>
+            <ComboBoxItem x:Name="figGyalogFekete" Content="Gyalog (fekete)"/>
         </ComboBox>
         <Label Content="Figura:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="35" Canvas.Top="4"/>
         <Grid x:Name="tablaGrid" Width="400" Height="400" Background="#FFAFAFAF" Canvas.Left="35" Canvas.Top="40" HorizontalAlignment="Left" VerticalAlignment="Center">
@@ -36,6 +36,7 @@
         <Label Content="F" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="298" Canvas.Top="445"/>
         <Label Content="G" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="350" Canvas.Top="445"/>
         <Label Content="H" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="400" Canvas.Top="445"/>
+        <Label x:Name="pozicio_Lbl" Content="Pozíció:" Canvas.Left="321" Canvas.Top="4" HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
     </Canvas>
 </Window>

@@ -20,6 +20,8 @@ namespace Sakklepesek_JeneiPeter
     /// </summary>
     public partial class MainWindow : Window
     {
+        Rectangle[,] sakkTabla = new Rectangle[8,8];
+
         public MainWindow()
         {
             InitializeComponent();
@@ -35,29 +37,52 @@ namespace Sakklepesek_JeneiPeter
             }
 
             BrushConverter bc = new BrushConverter();
-            for (int i = 0; i < 8; i++)
+            for (int y = 0; y < 8; y++)
             {
-                for (int j = 0; j < 8; j++)
+                for (int x = 0; x < 8; x++)
                 {
                     Rectangle mezo = new Rectangle();
-                    if (i % 2 == 0)
+                    if (y % 2 == 0)
                     {
-                        if (j % 2 == 0)
+                        if (x % 2 == 0)
                             mezo.Fill = (Brush)(bc.ConvertFrom("#ebecd0"));
                         else
                             mezo.Fill = (Brush)(bc.ConvertFrom("#779556"));
                     }
                     else
                     {
-                        if (j % 2 == 0)
+                        if (x % 2 == 0)
                             mezo.Fill = (Brush)(bc.ConvertFrom("#779556"));
                         else
                             mezo.Fill = (Brush)(bc.ConvertFrom("#ebecd0"));
                     }
 
                     tablaGrid.Children.Add(mezo);
-                    Grid.SetRow(mezo, i);
-                    Grid.SetColumn(mezo, j);
+                    sakkTabla[x, y] = mezo;
+                    Grid.SetRow(mezo, x);
+                    Grid.SetColumn(mezo, y);
+                    mezo.MouseUp += MezoKlikk;
+                }
+            }
+        }
+
+        private void figura_CBx_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void MezoKlikk(object sender, MouseButtonEventArgs e)
+        {
+            Rectangle mezo = (Rectangle)sender;
+
+            // Pozíció
+            string[] pozBetuk = { "A", "B", "C", "D", "E", "F", "G", "H"};
+            for (int y = 0; y < 8; y++)
+            {
+                for (int x = 0; x < 8; x++)
+                {
+                    if (sakkTabla[y, x].Equals(mezo))
+                        pozicio_Lbl.Content = $"Pozíció: {pozBetuk[x]}{8 - y}";
                 }
             }
         }
