@@ -7,19 +7,18 @@
         mc:Ignorable="d"
         Title="Sakklépések - Jenei Péter" Height="530" Width="470
         " ResizeMode="NoResize">
-    <Canvas x:Name="foGrid" Height="500" Margin="1,7,0,7">
+    <Canvas x:Name="foCanvas" Height="500" Margin="1,7,0,7">
         <ComboBox x:Name="figura_CBx" HorizontalAlignment="Left" VerticalAlignment="Center" Width="201" Canvas.Left="86" Canvas.Top="8" SelectionChanged="figura_CBx_SelectionChanged">
-            <ComboBoxItem x:Name="figKiraly" Content="Király"/>
-            <ComboBoxItem x:Name="figKiralyno" Content="Királynő"/>
-            <ComboBoxItem x:Name="figBastya" Content="Bástya"/>
-            <ComboBoxItem x:Name="figFuto" Content="Futó"/>
-            <ComboBoxItem x:Name="figHuszar" Content="Huszár"/>
-            <ComboBoxItem x:Name="figGyalogFeher" Content="Gyalog (fehér)"/>
-            <ComboBoxItem x:Name="figGyalogFekete" Content="Gyalog (fekete)"/>
+            <ComboBoxItem x:Name="figKiraly" Content="Király (1)"/>
+            <ComboBoxItem x:Name="figKiralyno" Content="Királynő (1)"/>
+            <ComboBoxItem x:Name="figBastya" Content="Bástya (2)"/>
+            <ComboBoxItem x:Name="figFuto" Content="Futó (2)"/>
+            <ComboBoxItem x:Name="figHuszar" Content="Huszár (2)"/>
+            <ComboBoxItem x:Name="figGyalogFeher" Content="Gyalog (fehér) (8)"/>
+            <ComboBoxItem x:Name="figGyalogFekete" Content="Gyalog (fekete) (8)"/>
         </ComboBox>
         <Label Content="Figura:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="35" Canvas.Top="4"/>
-        <Grid x:Name="tablaGrid" Width="400" Height="400" Background="#FFAFAFAF" Canvas.Left="35" Canvas.Top="40" HorizontalAlignment="Left" VerticalAlignment="Center">
-        </Grid>
+        <Grid x:Name="tablaGrid" Width="400" Height="400" Canvas.Left="35" Canvas.Top="40" HorizontalAlignment="Left" VerticalAlignment="Center" Background="#FFAFAFAF"/>
         <Label Content="8" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="16" Canvas.Top="52"/>
         <Label Content="7" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="14" Canvas.Top="104"/>
         <Label Content="6" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="14" Canvas.Top="151"/>
