@@ -21,7 +21,10 @@ namespace Sakklepesek_JeneiPeter
     public partial class MainWindow : Window
     {
         Rectangle[,] sakkTabla = new Rectangle[8,8];
+        bool[,] tablaSzabad = new bool[8,8];
         List<int> figurakSzama = new List<int>();
+        BrushConverter bc = new BrushConverter();
+        List<Rectangle> szinezettMezok = new List<Rectangle>();
 
         public MainWindow()
         {
@@ -43,8 +46,7 @@ namespace Sakklepesek_JeneiPeter
                 tablaGrid.RowDefinitions.Add(new RowDefinition());
                 tablaGrid.ColumnDefinitions.Add(new ColumnDefinition());
             }
-
-            BrushConverter bc = new BrushConverter();
+            
             for (int y = 0; y < 8; y++)
             {
                 for (int x = 0; x < 8; x++)
@@ -70,22 +72,22 @@ namespace Sakklepesek_JeneiPeter
                     Grid.SetRow(mezo, x);
                     Grid.SetColumn(mezo, y);
                     mezo.MouseUp += MezoKlikk;
+                    tablaSzabad[x, y] = true;
                 }
             }
         }
 
-        private void figura_CBx_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
         private void MezoKlikk(object sender, MouseButtonEventArgs e)
         {
+            int kijeloltFigIndex = figura_CBx.SelectedIndex;
+            if (kijeloltFigIndex == -1)
+                return;
+
             Rectangle mezo = (Rectangle)sender;
             int posX = 0;
             int posY = 0;
 
-            // Pozíció label
+            // Pozíció címke
             string[] pozBetuk = { "A", "B", "C", "D", "E", "F", "G", "H"};
             for (int y = 0; y < 8; y++)
             {
@@ -101,15 +103,23 @@ namespace Sakklepesek_JeneiPeter
             pozicio_Lbl.Content = $"Pozíció: {pozBetuk[posX]}{8 - posY}";
 
             // LÉPÉS
-            int kijelolt = figura_CBx.SelectedIndex;
 
             // Király
-            if (kijelolt == 0)
+            if (kijeloltFigIndex == 0)
             {
                 FiguraElhelyezo(posX, posY, "kiraly");
+
+                LepesMezoSzinezo(posX + 1, posY + 1);
+                LepesMezoSzinezo(posX + 1, posY);
+                LepesMezoSzinezo(posX + 1, posY - 1);
+                LepesMezoSzinezo(posX, posY + 1);
+                LepesMezoSzinezo(posX, posY - 1);
+                LepesMezoSzinezo(posX - 1, posY + 1);
+                LepesMezoSzinezo(posX - 1, posY);
+                LepesMezoSzinezo(posX - 1, posY - 1);
             }
 
-            FiguraSzamKorlatozo(kijelolt);
+            FiguraSzamKorlatozo(kijeloltFigIndex);
             figura_CBx.SelectedIndex = -1;
         }
 
@@ -128,6 +138,8 @@ namespace Sakklepesek_JeneiPeter
             ImageBrush imgBrush = new ImageBrush();
             imgBrush.ImageSource = new BitmapImage(new Uri($"Img/{kepFajl}.png", UriKind.Relative));
             figura.Fill = imgBrush;
+
+            tablaSzabad[x, y] = false;
         }
 
         private void FiguraSzamKorlatozo(int index)
@@ -140,9 +152,15 @@ namespace Sakklepesek_JeneiPeter
                 kijelolt.IsEnabled = false;
             }
         }
-        private void MezoSzinezo(int x, int y, string hexSzin)
+        private void LepesMezoSzinezo(int x, int y)
         {
+            string hexSzin = "#ced26b";
 
+            if (tablaSzabad[x, y])
+            {
+                sakkTabla[y, x].Fill = (Brush)(bc.ConvertFrom(hexSzin));
+                szinezettMezok.Add(sakkTabla[x, y]);
+            }
         }
     }
 }
