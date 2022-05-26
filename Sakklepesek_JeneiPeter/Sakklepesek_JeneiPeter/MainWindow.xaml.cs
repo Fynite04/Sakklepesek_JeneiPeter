@@ -21,7 +21,7 @@ namespace Sakklepesek_JeneiPeter
     public partial class MainWindow : Window
     {
         Rectangle[,] sakkTabla = new Rectangle[8,8];
-        bool[,] tablaSzabad = new bool[8,8];
+        bool[,] mezoUres = new bool[8,8];
         List<int> figurakSzama = new List<int>();
         BrushConverter bc = new BrushConverter();
         List<Rectangle> szinezettMezok = new List<Rectangle>();
@@ -72,7 +72,7 @@ namespace Sakklepesek_JeneiPeter
                     Grid.SetRow(mezo, x);
                     Grid.SetColumn(mezo, y);
                     mezo.MouseUp += MezoKlikk;
-                    tablaSzabad[x, y] = true;
+                    mezoUres[x, y] = true;
                 }
             }
         }
@@ -119,18 +119,41 @@ namespace Sakklepesek_JeneiPeter
                 LepesMezoSzinezo(posX - 1, posY - 1);
             }
 
+            // Királynő
+            if (kijeloltFigIndex == 1)
+            {
+                FiguraElhelyezo(posX, posY, "kiralyno");
+            }
+
+            // Bástya
+            if (kijeloltFigIndex == 2)
+            {
+                FiguraElhelyezo(posX, posY, "bastya");
+
+                for (int y = 0; y < 8; y++)
+                {
+                    LepesMezoSzinezo(posX, y);
+                }
+                for (int x = 0; x < 8; x++)
+                {
+                    LepesMezoSzinezo(x, posY);
+                }
+            }
+
             FiguraSzamKorlatozo(kijeloltFigIndex);
             figura_CBx.SelectedIndex = -1;
         }
 
         private void FiguraElhelyezo(int x, int y, string kepFajl)
         {
+            if (!mezoUres[x, y])
+                return;
+
             Rectangle figura = new Rectangle();
             figura.Height = 50;
             figura.Width = 50;
             var posLeft = 35 + x * 50;
             var posTop = 40 + y * 50;
-
             foCanvas.Children.Add(figura);
             Canvas.SetLeft(figura, posLeft);
             Canvas.SetTop(figura, posTop);
@@ -139,7 +162,7 @@ namespace Sakklepesek_JeneiPeter
             imgBrush.ImageSource = new BitmapImage(new Uri($"Img/{kepFajl}.png", UriKind.Relative));
             figura.Fill = imgBrush;
 
-            tablaSzabad[x, y] = false;
+            mezoUres[x, y] = false;
         }
 
         private void FiguraSzamKorlatozo(int index)
@@ -154,13 +177,35 @@ namespace Sakklepesek_JeneiPeter
         }
         private void LepesMezoSzinezo(int x, int y)
         {
-            string hexSzin = "#ced26b";
+            if (!mezoUres[x, y])
+                return;
 
-            if (tablaSzabad[x, y])
+            Rectangle lephetoMezo = new Rectangle();
+            lephetoMezo.Width = 50;
+            lephetoMezo.Height = 50;
+            var posLeft = 35 + x * 50;
+            var posTop = 40 + y * 50;
+            foCanvas.Children.Add(lephetoMezo);
+            Canvas.SetLeft(lephetoMezo, posLeft);
+            Canvas.SetTop(lephetoMezo, posTop);
+
+            ImageBrush imgBrush = new ImageBrush();
+            imgBrush.ImageSource = new BitmapImage(new Uri("Img/lepes.png", UriKind.Relative));
+            lephetoMezo.Fill = imgBrush;
+
+            szinezettMezok.Add(lephetoMezo);
+        }
+
+        private void figura_CBx_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (figura_CBx.SelectedIndex == -1)
+                return;
+
+            foreach (Rectangle mezo in szinezettMezok)
             {
-                sakkTabla[y, x].Fill = (Brush)(bc.ConvertFrom(hexSzin));
-                szinezettMezok.Add(sakkTabla[x, y]);
+                foCanvas.Children.Remove(mezo);
             }
+            szinezettMezok.Clear();
         }
     }
 }
