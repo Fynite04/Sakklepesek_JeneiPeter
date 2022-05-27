@@ -1,0 +1,17 @@
+D:\Pete\C#\Sakklepesek_JeneiPeter\Sakklepesek_JeneiPeter\Sakklepesek_JeneiPeter\bin\Debug\Sakklepesek_JeneiPeter.exe.config
+D:\Pete\C#\Sakklepesek_JeneiPeter\Sakklepesek_JeneiPeter\Sakklepesek_JeneiPeter\bin\Debug\Sakklepesek_JeneiPeter.exe
+D:\Pete\C#\Sakklepesek_JeneiPeter\Sakklepesek_JeneiPeter\Sakklepesek_JeneiPeter\bin\Debug\Sakklepesek_JeneiPeter.pdb
+D:\Pete\C#\Sakklepesek_JeneiPeter\Sakklepesek_JeneiPeter\Sakklepesek_JeneiPeter\obj\Debug\Sakklepesek_JeneiPeter.csproj.AssemblyReference.cache
+D:\Pete\C#\Sakklepesek_JeneiPeter\Sakklepesek_JeneiPeter\Sakklepesek_JeneiPeter\obj\Debug\Sakklepesek_JeneiPeter.csproj.SuggestedBindingRedirects.cache
+D:\Pete\C#\Sakklepesek_JeneiPeter\Sakklepesek_JeneiPeter\Sakklepesek_JeneiPeter\obj\Debug\MainWindow.g.cs
+D:\Pete\C#\Sakklepesek_JeneiPeter\Sakklepesek_JeneiPeter\Sakklepesek_JeneiPeter\obj\Debug\App.g.cs
+D:\Pete\C#\Sakklepesek_JeneiPeter\Sakklepesek_JeneiPeter\Sakklepesek_JeneiPeter\obj\Debug\Sakklepesek_JeneiPeter_MarkupCompile.cache
+D:\Pete\C#\Sakklepesek_JeneiPeter\Sakklepesek_JeneiPeter\Sakklepesek_JeneiPeter\obj\Debug\Sakklepesek_JeneiPeter_MarkupCompile.lref
+D:\Pete\C#\Sakklepesek_JeneiPeter\Sakklepesek_JeneiPeter\Sakklepesek_JeneiPeter\obj\Debug\MainWindow.baml
+D:\Pete\C#\Sakklepesek_JeneiPeter\Sakklepesek_JeneiPeter\Sakklepesek_JeneiPeter\obj\Debug\Sakklepesek_JeneiPeter.g.resources
+D:\Pete\C#\Sakklepesek_JeneiPeter\Sakklepesek_JeneiPeter\Sakklepesek_JeneiPeter\obj\Debug\Sakklepesek_JeneiPeter.Properties.Resources.resources
+D:\Pete\C#\Sakklepesek_JeneiPeter\Sakklepesek_JeneiPeter\Sakklepesek_JeneiPeter\obj\Debug\Sakklepesek_JeneiPeter.csproj.GenerateResource.cache
+D:\Pete\C#\Sakklepesek_JeneiPeter\Sakklepesek_JeneiPeter\Sakklepesek_JeneiPeter\obj\Debug\Sakklepesek_JeneiPeter.csproj.CoreCompileInputs.cache
+D:\Pete\C#\Sakklepesek_JeneiPeter\Sakklepesek_JeneiPeter\Sakklepesek_JeneiPeter\obj\Debug\Sakklepesek_JeneiPeter.exe
+D:\Pete\C#\Sakklepesek_JeneiPeter\Sakklepesek_JeneiPeter\Sakklepesek_JeneiPeter\obj\Debug\Sakklepesek_JeneiPeter.pdb
+D:\Pete\C#\Sakklepesek_JeneiPeter\Sakklepesek_JeneiPeter\Sakklepesek_JeneiPeter\obj\Debug\Sakklepesek_JeneiPeter_Content.g.cs
