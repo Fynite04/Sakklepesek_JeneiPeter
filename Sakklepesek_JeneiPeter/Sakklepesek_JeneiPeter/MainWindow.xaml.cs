@@ -39,6 +39,7 @@ namespace Sakklepesek_JeneiPeter
             figurakSzama.Add(8); // 6: fekete gyalog
         }
 
+        // Sakktábla inicializálása
         private void TablaLetrehozas()
         {
             for (int i = 0; i < 8; i++)
@@ -77,6 +78,7 @@ namespace Sakklepesek_JeneiPeter
             }
         }
 
+        // Ha rákattint egy mezőre
         private void MezoKlikk(object sender, MouseButtonEventArgs e)
         {
             int kijeloltFigIndex = figura_CBx.SelectedIndex;
@@ -102,7 +104,7 @@ namespace Sakklepesek_JeneiPeter
             }
             pozicio_Lbl.Content = $"Pozíció: {pozBetuk[posX]}{8 - posY}";
 
-            // LÉPÉS
+            // LÉPÉSEK
 
             // Király
             if (kijeloltFigIndex == 0)
@@ -119,29 +121,112 @@ namespace Sakklepesek_JeneiPeter
                 LepesMezoSzinezo(posX - 1, posY - 1);
             }
 
-            // Bástya
-            if (kijeloltFigIndex == 2)
+            // Királynő
+            if (kijeloltFigIndex == 1)
             {
-                FiguraElhelyezo(posX, posY, "bastya");
+                FiguraElhelyezo(posX, posY, "kiralyno");
 
+                // Fel
                 for (int y = posY - 1; y >= 0; y--)
                 {
                     if (!mezoUres[posX, y])
                         break;
                     LepesMezoSzinezo(posX, y);
                 }
+                // Le
                 for (int y = posY + 1; y < 8; y++)
                 {
                     if (!mezoUres[posX, y])
                         break;
                     LepesMezoSzinezo(posX, y);
                 }
+                // Bal
                 for (int x = posX - 1; x >= 0; x--)
                 {
                     if (!mezoUres[x, posY])
                         break;
                     LepesMezoSzinezo(x, posY);
                 }
+                // Jobb
+                for (int x = posX + 1; x < 8; x++)
+                {
+                    if (!mezoUres[x, posY])
+                        break;
+                    LepesMezoSzinezo(x, posY);
+                }
+                // Bal-fel
+                int tempX = posX;
+                for (int y = posY - 1; y >= 0; y--)
+                {
+                    tempX--;
+                    if (tempX < 0)
+                        break;
+                    if (!mezoUres[tempX, y])
+                        break;
+                    LepesMezoSzinezo(tempX, y);
+                }
+                // Jobb-le
+                tempX = posX;
+                for (int y = posY + 1; y < 8; y++)
+                {
+                    tempX++;
+                    if (tempX >= 8)
+                        break;
+                    if (!mezoUres[tempX, y])
+                        break;
+                    LepesMezoSzinezo(tempX, y);
+                }
+                // Bal-le
+                int tempY = posY;
+                for (int x = posX - 1; x >= 0; x--)
+                {
+                    tempY++;
+                    if (tempY >= 8)
+                        break;
+                    if (!mezoUres[x, tempY])
+                        break;
+                    LepesMezoSzinezo(x, tempY);
+                }
+                // Jobb-fel
+                tempY = posY;
+                for (int x = posX + 1; x < 8; x++)
+                {
+                    tempY--;
+                    if (tempY < 0)
+                        break;
+                    if (!mezoUres[x, tempY])
+                        break;
+                    LepesMezoSzinezo(x, tempY);
+                }
+            }
+
+            // Bástya
+            if (kijeloltFigIndex == 2)
+            {
+                FiguraElhelyezo(posX, posY, "bastya");
+
+                // Fel
+                for (int y = posY - 1; y >= 0; y--)
+                {
+                    if (!mezoUres[posX, y])
+                        break;
+                    LepesMezoSzinezo(posX, y);
+                }
+                // Le
+                for (int y = posY + 1; y < 8; y++)
+                {
+                    if (!mezoUres[posX, y])
+                        break;
+                    LepesMezoSzinezo(posX, y);
+                }
+                // Bal
+                for (int x = posX - 1; x >= 0; x--)
+                {
+                    if (!mezoUres[x, posY])
+                        break;
+                    LepesMezoSzinezo(x, posY);
+                }
+                // Jobb
                 for (int x = posX + 1; x < 8; x++)
                 {
                     if (!mezoUres[x, posY])
@@ -150,11 +235,78 @@ namespace Sakklepesek_JeneiPeter
                 }
             }
 
+            // Futó
+            if (kijeloltFigIndex == 3)
+            {
+                FiguraElhelyezo(posX, posY, "futo");
+
+                // Bal-fel
+                int tempX = posX;
+                for (int y = posY - 1; y >= 0; y--)
+                {
+                    tempX--;
+                    if (tempX < 0)
+                        break;
+                    if (!mezoUres[tempX, y])
+                        break;
+                    LepesMezoSzinezo(tempX, y);
+                }
+                // Jobb-le
+                tempX = posX;
+                for (int y = posY + 1; y < 8; y++)
+                {
+                    tempX++;
+                    if (tempX >= 8)
+                        break;
+                    if (!mezoUres[tempX, y])
+                        break;
+                    LepesMezoSzinezo(tempX, y);
+                }
+                // Bal-le
+                int tempY = posY;
+                for (int x = posX - 1; x >= 0; x--)
+                {
+                    tempY++;
+                    if (tempY >= 8)
+                        break;
+                    if (!mezoUres[x, tempY])
+                        break;
+                    LepesMezoSzinezo(x, tempY);
+                }
+                // Jobb-fel
+                tempY = posY;
+                for (int x = posX + 1; x < 8; x++)
+                {
+                    tempY--;
+                    if (tempY < 0)
+                        break;
+                    if (!mezoUres[x, tempY])
+                        break;
+                    LepesMezoSzinezo(x, tempY);
+                }
+            }
+
+            // Huszár
+            if (kijeloltFigIndex == 4)
+            {
+                FiguraElhelyezo(posX, posY, "huszar");
+
+                LepesMezoSzinezo(posX + 1, posY - 2);
+                LepesMezoSzinezo(posX + 1, posY + 2);
+                LepesMezoSzinezo(posX - 1, posY - 2);
+                LepesMezoSzinezo(posX - 1, posY + 2);
+                LepesMezoSzinezo(posX + 2, posY - 1);
+                LepesMezoSzinezo(posX + 2, posY + 1);
+                LepesMezoSzinezo(posX - 2, posY - 1);
+                LepesMezoSzinezo(posX - 2, posY + 1);
+            }
+
             // Fehér gyalog
             if (kijeloltFigIndex == 5)
             {
                 FiguraElhelyezo(posX, posY, "gyalog_feher");
 
+                // Kezdő dupla lépés
                 if (posY == 6)
                 {
                     for (int y = posY - 1; y >= posY - 2; y--)
@@ -175,6 +327,7 @@ namespace Sakklepesek_JeneiPeter
             {
                 FiguraElhelyezo(posX, posY, "gyalog_fekete");
 
+                // Kezdő dupla lépés
                 if (posY == 1)
                 {
                     for (int y = posY + 1; y <= posY + 2; y++)
@@ -194,6 +347,7 @@ namespace Sakklepesek_JeneiPeter
             figura_CBx.SelectedIndex = -1;
         }
 
+        // Kiválasztott figura elhelyezése a rákattintott mezőre, amennyiben üres a mező
         private void FiguraElhelyezo(int x, int y, string kepFajl)
         {
             if (!mezoUres[x, y])
@@ -215,6 +369,7 @@ namespace Sakklepesek_JeneiPeter
             mezoUres[x, y] = false;
         }
 
+        // Figurák számának korlátozása adott érték szerint
         private void FiguraSzamKorlatozo(int index)
         {
             figurakSzama[index]--;
@@ -229,6 +384,8 @@ namespace Sakklepesek_JeneiPeter
             nev = nev.Substring(0, nev.Length - 2) + $"{figurakSzama[index]})";
             kijelolt.Content = nev;
         }
+
+        // Léphető mezők mutatása
         private void LepesMezoSzinezo(int x, int y)
         {
             if (x >= 8 || x < 0 || y >= 8 || y < 0 || !mezoUres[x, y])
@@ -250,6 +407,7 @@ namespace Sakklepesek_JeneiPeter
             szinezettMezok.Add(lephetoMezo);
         }
 
+        // Ha változik a kiválasztott figura, akkor törli a léphető mezőkön lévő jelzéseket
         private void figura_CBx_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (figura_CBx.SelectedIndex == -1)
