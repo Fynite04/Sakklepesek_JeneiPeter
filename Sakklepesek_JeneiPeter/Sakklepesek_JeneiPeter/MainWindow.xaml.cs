@@ -119,24 +119,74 @@ namespace Sakklepesek_JeneiPeter
                 LepesMezoSzinezo(posX - 1, posY - 1);
             }
 
-            // Királynő
-            if (kijeloltFigIndex == 1)
-            {
-                FiguraElhelyezo(posX, posY, "kiralyno");
-            }
-
             // Bástya
             if (kijeloltFigIndex == 2)
             {
                 FiguraElhelyezo(posX, posY, "bastya");
 
-                for (int y = 0; y < 8; y++)
+                for (int y = posY - 1; y >= 0; y--)
                 {
+                    if (!mezoUres[posX, y])
+                        break;
                     LepesMezoSzinezo(posX, y);
                 }
-                for (int x = 0; x < 8; x++)
+                for (int y = posY + 1; y < 8; y++)
                 {
+                    if (!mezoUres[posX, y])
+                        break;
+                    LepesMezoSzinezo(posX, y);
+                }
+                for (int x = posX - 1; x >= 0; x--)
+                {
+                    if (!mezoUres[x, posY])
+                        break;
                     LepesMezoSzinezo(x, posY);
+                }
+                for (int x = posX + 1; x < 8; x++)
+                {
+                    if (!mezoUres[x, posY])
+                        break;
+                    LepesMezoSzinezo(x, posY);
+                }
+            }
+
+            // Fehér gyalog
+            if (kijeloltFigIndex == 5)
+            {
+                FiguraElhelyezo(posX, posY, "gyalog_feher");
+
+                if (posY == 6)
+                {
+                    for (int y = posY - 1; y >= posY - 2; y--)
+                    {
+                        if (!mezoUres[posX, y])
+                            break;
+                        LepesMezoSzinezo(posX, y);
+                    }
+                }
+                else
+                {
+                    LepesMezoSzinezo(posX, posY - 1);
+                }
+            }
+
+            // Fekete gyalog
+            if (kijeloltFigIndex == 6)
+            {
+                FiguraElhelyezo(posX, posY, "gyalog_fekete");
+
+                if (posY == 1)
+                {
+                    for (int y = posY + 1; y <= posY + 2; y++)
+                    {
+                        if (!mezoUres[posX, y])
+                            break;
+                        LepesMezoSzinezo(posX, y);
+                    }
+                }
+                else
+                {
+                    LepesMezoSzinezo(posX, posY + 1);
                 }
             }
 
@@ -168,16 +218,20 @@ namespace Sakklepesek_JeneiPeter
         private void FiguraSzamKorlatozo(int index)
         {
             figurakSzama[index]--;
+            ComboBoxItem kijelolt = (ComboBoxItem)figura_CBx.SelectedItem;
 
             if (figurakSzama[index] == 0)
             {
-                ComboBoxItem kijelolt = (ComboBoxItem)figura_CBx.SelectedItem;
                 kijelolt.IsEnabled = false;
             }
+
+            string nev = (string)kijelolt.Content;
+            nev = nev.Substring(0, nev.Length - 2) + $"{figurakSzama[index]})";
+            kijelolt.Content = nev;
         }
         private void LepesMezoSzinezo(int x, int y)
         {
-            if (!mezoUres[x, y])
+            if (x >= 8 || x < 0 || y >= 8 || y < 0 || !mezoUres[x, y])
                 return;
 
             Rectangle lephetoMezo = new Rectangle();
